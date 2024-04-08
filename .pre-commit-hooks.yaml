@@ -6,3 +6,4 @@
   files: \.(png|jpg|jpeg|gif|bmp|tiff)$
   additional_dependencies:
     - Pillow
+    - typer
