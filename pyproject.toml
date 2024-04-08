@@ -68,6 +68,7 @@ name = "webp-pre-commit"
 version = "0.0.6"
 dependencies = [
     "Pillow",
+    "typer",
 ]
 
 [project.optional-dependencies]
