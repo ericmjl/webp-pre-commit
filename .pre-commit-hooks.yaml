@@ -1,0 +1,8 @@
+- id: convert-to-webp
+  name: Convert images to WebP
+  description: This hook converts image files to WebP format.
+  entry: python convert_to_webp.py
+  language: python
+  files: \.(png|jpg|jpeg|gif|bmp|tiff)$
+  additional_dependencies:
+    - Pillow
