@@ -83,10 +83,6 @@ docs = [
     "mkdocs"
 ]
 
-[project.scripts]
-webp-pre-commit = "webp_pre-commit.cli:app"
-
-
 [tool.coverage.run]
 omit = [
     "tests/*",
