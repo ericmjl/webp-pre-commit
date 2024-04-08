@@ -60,6 +60,9 @@ select = ["E", "F", "I"]
 [tool.setuptools]
 include-package-data = true
 
+[setuptools.find]
+where = ["webp_hook"]
+
 [project]
 name = "webp-pre-commit"
 version = "0.0.4"
@@ -75,6 +78,9 @@ docs = [
     "mkdocs-material",
     "mkdocs"
 ]
+
+[project.scripts]
+webp-hook = "webp_hook.cli:app"
 
 [tool.coverage.run]
 omit = [
