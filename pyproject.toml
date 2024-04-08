@@ -60,19 +60,12 @@ select = ["E", "F", "I"]
 [tool.setuptools]
 include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["webp_pre-commit"]
-
 [project]
 name = "webp-pre-commit"
 version = "0.0.3"
 dependencies = [
-    "matplotlib",
-    "pandas",
-    "scikit-learn",
-    "numpy",
+    "Pillow",
 ]
-readme = "README.md"
 
 [project.optional-dependencies]
 tests = [
