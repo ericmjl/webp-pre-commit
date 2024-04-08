@@ -1,4 +1,4 @@
-- id: convert-to-webp
+- id: webp-hook
   name: Convert images to WebP
   description: This hook converts image files to WebP format.
   entry: python convert_to_webp.py
