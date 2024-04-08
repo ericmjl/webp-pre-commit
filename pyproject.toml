@@ -65,7 +65,7 @@ where = ["webp_hook"]
 
 [project]
 name = "webp-pre-commit"
-version = "0.0.6"
+version = "0.0.7"
 dependencies = [
     "Pillow",
     "typer",
