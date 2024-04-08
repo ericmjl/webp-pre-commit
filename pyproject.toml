@@ -64,7 +64,7 @@ include-package-data = true
 where = ["webp_pre-commit"]
 
 [project]
-name = "WebP Pre-Commit"
+name = "webp-pre-commit"
 version = "0.0.1"
 dependencies = [
     "matplotlib",
