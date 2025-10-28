@@ -83,6 +83,12 @@ docs = [
 [project.scripts]
 webp-hook = "webp_hook.cli:app"
 
+[dependency-groups]
+dev = [
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
+]
+
 [tool.coverage.run]
 omit = [
     "tests/*",
