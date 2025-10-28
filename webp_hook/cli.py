@@ -18,8 +18,21 @@ def convert(image_paths: list[Path]):
         try:
             img = Image.open(path)
             webp_path = path.with_suffix('.webp')
-            img.save(webp_path, 'WEBP')
+            
+            # Check if it's an animated GIF
+            if path.suffix.lower() == '.gif':
+                is_animated = getattr(img, 'is_animated', False)
+                if is_animated:
+                    img.save(webp_path, 'WEBP', save_all=True)
+                    print(f"Converted animated GIF {path} to animated WebP {webp_path}")
+                else:
+                    img.save(webp_path, 'WEBP')
+                    print(f"Converted static GIF {path} to WebP {webp_path}")
+            else:
+                # Regular conversion for other formats
+                img.save(webp_path, 'WEBP')
+                print(f"Converted {path} to WebP {webp_path}")
+            
             path.unlink()  # Delete the original image
-            print(f"Converted and deleted {path}, new file is {webp_path}")
         except Exception as e:
             print(f"Error converting {path}: {e}")
