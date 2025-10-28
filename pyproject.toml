@@ -55,6 +55,9 @@ profile = "black"
 [tool.ruff]
 # See https://docs.astral.sh/ruff/rules/ for a list of rules.
 # See https://docs.astral.sh/ruff/configuration/#using-pyprojecttoml for configuration documentation
+line-length = 88
+
+[tool.ruff.lint]
 select = ["E", "F", "I"]
 
 [tool.setuptools]
@@ -66,6 +69,7 @@ where = ["webp_hook"]
 [project]
 name = "webp-pre-commit"
 version = "0.0.9"
+requires-python = ">=3.9"
 dependencies = [
     "Pillow",
     "typer",
@@ -87,6 +91,10 @@ webp-hook = "webp_hook.cli:app"
 dev = [
     "pytest>=8.4.2",
     "pytest-cov>=7.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "interrogate>=1.5.0",
+    "twine>=4.0.0",
 ]
 
 [tool.coverage.run]
