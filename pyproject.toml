@@ -68,7 +68,7 @@ where = ["webp_hook"]
 
 [project]
 name = "webp-pre-commit"
-version = "0.0.11"
+version = "0.0.12"
 requires-python = ">=3.9"
 dependencies = [
     "Pillow",
