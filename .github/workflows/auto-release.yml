@@ -1,20 +1,25 @@
 name: Auto Release
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - main
 
 jobs:
   auto-release:
     runs-on: ubuntu-latest
-    # Only run if this is not a tag push (to avoid infinite loops)
-    if: "!startsWith(github.ref, 'refs/tags/')"
+    # Only run if the PR was actually merged (not just closed)
+    # Skip if the commit message contains "chore: bump version" (prevents self-triggering)
+    if: |
+      github.event.pull_request.merged == true &&
+      !contains(github.event.head_commit.message, 'chore: bump version')
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
+          ref: main
           fetch-depth: 0  # Fetch all history for proper version bumping
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -38,7 +43,7 @@ jobs:
           echo "Current version: $CURRENT_VERSION"
 
           # Bump patch version using uv
-          uv version --patch
+          uv version --bump patch
 
           # Get the new version
           NEW_VERSION=$(uv run python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
