@@ -63,7 +63,7 @@ jobs:
         id: release_notes
         run: |
           # Generate release notes using llamabot
-          RELEASE_NOTES=$(uv run --with llamabot[all] llamabot git write_release_notes)
+          RELEASE_NOTES=$(uv run --with llamabot[all] llamabot git write-release-notes)
           echo "Generated release notes:"
           echo "$RELEASE_NOTES"
 

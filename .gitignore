@@ -151,3 +151,4 @@ docs/cli.md
 
 # LlamaBot
 .llamabot/
+.envrc
