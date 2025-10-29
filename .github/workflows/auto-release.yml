@@ -61,9 +61,20 @@ jobs:
 
       - name: Generate release notes with llamabot
         id: release_notes
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           # Generate release notes using llamabot
-          RELEASE_NOTES=$(uv run --with llamabot[all] llamabot git write-release-notes)
+          if [ -n "$OPENAI_API_KEY" ]; then
+            RELEASE_NOTES=$(uv run --with llamabot[all] llamabot git write-release-notes)
+          else
+            echo "No OpenAI API key found, generating simple release notes"
+            RELEASE_NOTES="## Changes
+
+See commit history for details.
+
+Generated automatically on $(date)"
+          fi
           echo "Generated release notes:"
           echo "$RELEASE_NOTES"
 
